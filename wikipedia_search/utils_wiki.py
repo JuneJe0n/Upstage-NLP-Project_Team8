@@ -48,7 +48,25 @@ def get_wikipedia_articles(keywords):
 
 
 
+def remove_empty_subcontent(content):
+    """빈 subcontent를 제거하는 재귀 함수"""
+    for section in content[:]:  # 리스트 복사 후 탐색
+        if 'subcontent' in section:
+            # subcontent가 비어 있으면 제거
+            if not section['subcontent']:
+                del section['subcontent']
+            else:
+                # subcontent가 있으면 재귀적으로 탐색
+                remove_empty_subcontent(section['subcontent'])
+
+    # content에서 subcontent가 비어 있거나 필요한 항목 제거
+    return [section for section in content if 'subcontent' not in section or section['subcontent']]
+
+
+
 def parse_wikipedia_page(url):
+    import requests
+    from lxml import html
 
     response = requests.get(url)
 
@@ -88,44 +106,38 @@ def parse_wikipedia_page(url):
 
         if is_target_tag:
             # p, ul 태그인 경우 텍스트 수집
-            tag_name = element.tag
             text = element.text_content().strip()  # 텍스트 추출 및 공백 제거
 
             # 텍스트를 저장할 위치에 추가
             if current_h3:  # 현재 h3가 있으면 h3의 subcontent에 추가
-                current_h3['subcontent'].append({"text": text})    # "tag": tag_name,
-            elif current_h2:  # 현재 h2가 있으면 h2의 subcontent에 추가
-                current_h2['subcontent'].append({"text": text})
+                current_h3['text'] += text + " "  # 공백으로 텍스트 결합
+            elif current_h2:  # 현재 h2가 있으면 h2의 text에 추가
+                current_h2['text'] += text + " "  # 공백으로 텍스트 결합
             else:
-                introduction += text + " "  # 공백으로 텍스트 결합
-
-            # print(f"Tag: {tag_name}")
-            # print(f"Text: {text}")
-            # print('-' * 50)  # 구분선
+                introduction += text + " "  # introduction에 추가
 
         elif is_target_class:
             # h2, h3, h4인 경우
-            if 'mw-heading2' in element.get('class', ''):  # h2
-                tag_name = element.tag
-                title2 = element.text_content().strip()  # 텍스트 추출
-                current_h2 = {"title2": title2, "subcontent": []}
-                content.append(current_h2)
+            title = element.text_content().strip()  # 텍스트 추출
+            title = title.replace('[edit]', '').strip()  # '[edit]' 제거 및 공백 제거
 
-            elif 'mw-heading3' in element.get('class', ''):  # h3
-                tag_name = element.tag
-                title3 = element.text_content().strip()  # 텍스트 추출
-                current_h3 = {"title3": title3, "subcontent": []}
+            if 'mw-heading2' in element.get('class', ''):  # h2
+                current_h2 = {"title2": title, "text": '', "subcontent": []}
+                content.append(current_h2)
+                current_h3 = None  # 새로운 h2가 나타나면 h3 초기화
+
+            elif 'mw-heading3' in element.get('class', '') and current_h2:  # h3
+                current_h3 = {"title3": title, "text": '', "subcontent": []}
                 current_h2['subcontent'].append(current_h3)
 
-            elif 'mw-heading4' in element.get('class', ''):  # h4
-                tag_name = element.tag
-                title4 = element.text_content().strip()  # 텍스트 추출
-                current_h3['subcontent'].append({"title4": title4, "subcontent": []})
-
-            # print(f"Tag: {tag_name}")
-            # print(f"Text: {title2 if 'title2' in locals() else title3 if 'title3' in locals() else title4}")
-            # print('-' * 50) 
+            elif 'mw-heading4' in element.get('class', '') and current_h3:  # h4
+                h4_structure = {"title4": title, "text": '', "subcontent": []}
+                current_h3['subcontent'].append(h4_structure)
 
     # 업데이트된 introduction 저장
     document_structure[0]["introduction"] = introduction.strip()  # 마지막에 공백 제거
+
+    # 빈 subcontent 제거
+    document_structure[0]["content"] = remove_empty_subcontent(content)
+
     return document_structure
