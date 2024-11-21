@@ -9,7 +9,7 @@ from utils_wiki import remove_html_tags, get_wikipedia_articles, parse_wikipedia
 
 
 prompts, answers = read_data('./test_samples.csv')
-prompts = prompts[5:] # 5번부터 10번만 적용
+prompts = prompts[5:] # 6번부터 10번만 적용
 
 # 질문 원본
 print('='*100, '질문 원본')
