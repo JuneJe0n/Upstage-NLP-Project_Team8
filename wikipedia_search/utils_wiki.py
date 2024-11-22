@@ -36,7 +36,7 @@ def get_wikipedia_articles(keywords):
         pageid = result["pageid"]
         
         # 각 페이지 ID로 url 가져오기
-        url = f"https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&rvprop=content&rvslots=main&pageids={pageid}"
+        url = f'https://en.wikipedia.org/?curid={pageid}'
         
         articles.append({
             "title": title,
