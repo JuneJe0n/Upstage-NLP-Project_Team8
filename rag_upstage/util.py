@@ -2,7 +2,6 @@ from langchain_upstage import UpstageEmbeddings
 from langchain_upstage import ChatUpstage
 from langchain.prompts import PromptTemplate
 from dotenv import load_dotenv
-from duckduckgo_search import DDGS
 from langchain.schema.document import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.example_selectors import MaxMarginalRelevanceExampleSelector
@@ -43,12 +42,6 @@ def split_documents(documents: list[Document]):
         chunk.metadata["chunk_size"] = len(chunk.page_content)
         
     return chunks
-
-def get_embedding_function():
-    embeddings = UpstageEmbeddings(
-        model="solar-embedding-1-large-query", 
-        api_key=upstage_api_key)
-    return embeddings
 
 
 def extract_question_queries(original_prompt):

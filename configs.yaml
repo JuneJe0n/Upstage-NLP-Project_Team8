@@ -1,6 +1,6 @@
-CHROMA_PATH : "/home/jiyoon/UpstageNLP_Team8/rag_upstage/chroma" # path to chroma database
-TEST_PATH: "/home/jiyoon/UpstageNLP_Team8/rag_upstage/test_data/test_samples.csv" # path for test file
-DATA_PATH: "/home/jiyoon/UpstageNLP_Team8/rag_upstage/data" # path for pdf files
+MILVUS_PATH : "/mnt/d/UpstageNLP_test/rag_upstage/MILVUS" # path to MILVUS database
+TEST_PATH: "/mnt/d/UpstageNLP_milvus/rag_upstage/test_data/test_samples(ewha).csv" # path for test file
+DATA_PATH: "/mnt/d/UpstageNLP_milvus/rag_upstage/data" # path for pdf files
 
 # template for prompt without wikipedia search
 PROMPT_TEMPLATE: |

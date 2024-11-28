@@ -3,7 +3,7 @@ import pdfplumber
 import re
 from util import read_test_data
 
-DATA_PATH = "/home/jiyoon/UpstageNLP_Team8/rag_upstage/data/ewha.pdf"
+DATA_PATH = "D:/UpstageNLP_test/rag_upstage/data/ewha.pdf"
 
 def main():
     # Create CLI.
