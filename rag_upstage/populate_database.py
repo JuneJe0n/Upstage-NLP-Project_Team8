@@ -14,10 +14,14 @@ from util import get_embedding_function, split_documents, load_pdf
 from langchain_community.vectorstores.chroma import Chroma
 
 
-# Get config
-config_path = "/home/jiyoon/UpstageNLP_Team8/configs.yaml"
+
+config_path = "C:/Users/jungmin/Desktop/UpstageNLP_Team8/rag_upstage/configs.yaml"
+print(f"Config file path: {config_path}")  # 디버깅용 출력
+
+
+# Get con
 with open(config_path) as f:
-    config = yaml.load(f, Loader = yaml.FullLoader)
+    config = yaml.safe_load(f)
 
 chroma_path = config["CHROMA_PATH"]
 data_path = config["DATA_PATH"]

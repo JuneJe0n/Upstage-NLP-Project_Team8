@@ -1,0 +1,22 @@
+CHROMA_PATH: "C:/Users/jungmin/Desktop/UpstageNLP_Team8/rag_upstage/chroma"
+TEST_PATH: "C:/Users/jungmin/Desktop/UpstageNLP_Team8/rag_upstage/test_data/test_samples.csv"
+DATA_PATH: "C:/Users/jungmin/Desktop/UpstageNLP_Team8/rag_upstage/data"
+
+# template for prompt without wikipedia search
+PROMPT_TEMPLATE: |
+  Now, answer the following question based on the provided context.
+  Let's think step by step to find the most accurate answer.
+  If the answer is not present in the context, write 'The information is not present in the context.'
+  ---
+  Q: {question}
+  ---
+  Context: {context}
+
+# template for prompt with wikipedia search
+PROMPT_TEMPLATE_WIKI: |
+  Now, answer the following question based on the provided context.
+  Let's think step by step to find the most accurate answer.
+  ---
+  Q: {question}
+  ---
+  Context: {context}
