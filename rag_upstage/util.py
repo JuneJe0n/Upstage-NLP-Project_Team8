@@ -175,7 +175,6 @@ def accuracy(answers, responses):
     for answer, response in zip(answers, responses):
         print("-" * 10)
         generated_answer = extract_answer(response)
-        print(response)
 
         # check
         if generated_answer:
@@ -192,6 +191,8 @@ def accuracy(answers, responses):
 
     return acc
 
+
+#수정 필요!!
 def extract_answer(response):
     """
     extracts the answer from the response using a regular expression.
