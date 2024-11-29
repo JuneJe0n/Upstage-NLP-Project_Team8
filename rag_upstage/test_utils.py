@@ -74,7 +74,7 @@ def extract_answer(response):
 
     if there are any answers formatted like the format, it returns None.
     """
-    pattern = r"\([A-E]\)"  # Regular expression to find the first occurrence of (A), (B), (C), etc.
+    pattern = r"\([A-J]\)"  # Regular expression to find the first occurrence of (A), (B), (C), etc.
     match = re.search(pattern, response)
 
     if match:
