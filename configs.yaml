@@ -1,4 +1,8 @@
 CHROMA_PATH : "/home/jiyoon/UpstageNLP_Team8/rag_upstage/chroma" # path to chroma database
+CHROMA_PATH(percentile) : "./chroma(percentile)"
+CHROMA_PATH(standard_deviation) : "./chroma(standard_deviation)"
+CHROMA_PATH(interquartile) : "./chroma(interquartile)"
+CHROMA_PATH(gradient) : "./chroma(gradient)"
 TEST_PATH: "/home/jiyoon/UpstageNLP_Team8/rag_upstage/test_data/test_samples.csv" # path for test file
 DATA_PATH: "/home/jiyoon/UpstageNLP_Team8/rag_upstage/data" # path for pdf files
 
