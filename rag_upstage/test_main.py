@@ -39,13 +39,16 @@ def main():
     prompts, answers = read_test_data(test_path)
 
     responses = []
+    
+    remaining_prompt = []     # 위키검색에 실패한 질문을 저장할 리스트
 
     for original_prompt in prompts:
         # extract question of prompt
-        response = query_rag(original_prompt)
+        response = query_rag(original_prompt, remaining_prompt)
         responses.append(response)
     
     acc = accuracy(answers, responses)
+    print(f"계산문제: {len(remaining_prompt)}")
     print(f"Final Accuracy: {acc}%")
         
 
@@ -57,7 +60,8 @@ def split_long_text(page_content: str, max_length: int = 10000) -> list:
     return chunks
 
 
-def query_rag(original_prompt:str):
+def query_rag(original_prompt:str, remaining_prompt: list):
+    
     # Make embedding
     embedding_function = get_embedding_function()
     vectorstore = Chroma(persist_directory=chroma_path, embedding_function=embedding_function)
@@ -81,44 +85,55 @@ def query_rag(original_prompt:str):
         # Extract keyword from question
         keyword = extract_question_keywords(question)
         print(f"✅Extracted keyword '{keyword}' from {question}")
+        problem_type = keyword[0]["problem_type"]
 
-        # Add wiki page to vectorstore
-        pages = fetch_wiki_page(keyword)
-        for page in pages:
-            print(f"🔍 Processing page with length: {len(page.page_content)}")
-            
-            # 페이지 길이 제한 초과 시 분할
-            if len(page.page_content) > 10000:
-                print(f"⚠️ Page too long, splitting into smaller chunks.")
-                page_chunks = split_long_text(page.page_content)
-                print(f"📄 Split page into {len(page_chunks)} chunks of max 10000 characters each.")
-                split_pages = [Document(page_content=chunk) for chunk in page_chunks]
+        # Add to remaining_prompt if problem type is 'Math' or if context is missing
+        if "Math" in problem_type:
+            print(f"⚠️ Skipping Wikipedia search for Math-related question.")
+            remaining_prompt.append(original_prompt)
+
+        else:
+            # Add wiki page to vectorstore
+            pages = fetch_wiki_page(keyword)
+            if pages == []:
+                print(f"⚠️ Unable to find Wikipedia results for this question.")
+                remaining_prompt.append(original_prompt)
             else:
-                split_pages = [page]
-            
-            # Split the smaller pages into semantic chunks
-            for split_page in split_pages:
-                chunks = sem_split_documents([split_page], threshold)
-                print(f"🔍 Split chunks: {[len(chunk.page_content) for chunk in chunks]}")
-                print(f"✅ Number of chunks created: {len(chunks)}")
+                for page in pages:
+                    print(f"🔍 Processing page with length: {len(page.page_content)}")
+                    
+                    # 페이지 길이 제한 초과 시 분할
+                    if len(page.page_content) > 10000:
+                        print(f"⚠️ Page too long, splitting into smaller chunks.")
+                        page_chunks = split_long_text(page.page_content)
+                        print(f"📄 Split page into {len(page_chunks)} chunks of max 10000 characters each.")
+                        split_pages = [Document(page_content=chunk) for chunk in page_chunks]
+                    else:
+                        split_pages = [page]
+                    
+                    # Split the smaller pages into semantic chunks
+                    for split_page in split_pages:
+                        chunks = sem_split_documents([split_page], threshold)
+                        print(f"🔍 Split chunks: {[len(chunk.page_content) for chunk in chunks]}")
+                        print(f"✅ Number of chunks created: {len(chunks)}")
 
-                # Add the chunks to the vector store
-                vectorstore.add_documents(chunks)
-                print("👉 Added to database.")
+                        # Add the chunks to the vector store
+                        vectorstore.add_documents(chunks)
+                        print("👉 Added to database.")
 
-        # 최종 벡터스토어 상태 확인
-        total_documents = vectorstore._collection.count()
-        print(f"📂 Total documents in vectorstore: {total_documents}")
+            # 최종 벡터스토어 상태 확인
+            total_documents = vectorstore._collection.count()
+            print(f"📂 Total documents in vectorstore: {total_documents}")
 
-        # Context retrieval from the updated RAG database for the query
-        results = vectorstore.similarity_search_with_score(question, k=10)
+            # Context retrieval from the updated RAG database for the query
+            results = vectorstore.similarity_search_with_score(question, k=10)
 
-        context_text = "\n\n---\n\n".join([doc.page_content for doc, _score in results])
-        print("len(context_text): ",len(context_text))
+            context_text = "\n\n---\n\n".join([doc.page_content for doc, _score in results])
+            print("len(context_text): ",len(context_text))
 
-        prompt = ChatPromptTemplate.from_template(prompt_template_wiki).format(context=context_text, question=question)
-        response = model.invoke(prompt)  
-    
+            prompt = ChatPromptTemplate.from_template(prompt_template_wiki).format(context=context_text, question=question)
+            response = model.invoke(prompt)  
+        
 
     return response.content     
 
