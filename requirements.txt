@@ -1,0 +1,18 @@
+torch
+langchain==0.2.2
+langchain-community==0.2.3
+langchain-openai==0.1.8 # For embeddings
+langchain-experimental
+langchain_upstage
+openai==1.31.1 # For embeddings
+tiktoken==0.7.0  # For embeddings 
+
+python-dotenv==1.0.1 # For reading environment variables stored in .env file
+unstructured==0.14.4 # Document loading
+pypdf
+pytest
+boto3
+
+pymilvus==2.5.0 #python sdk for milvus
+milvus-model
+wikipedia-api
