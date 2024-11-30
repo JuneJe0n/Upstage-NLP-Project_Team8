@@ -1,0 +1,60 @@
+MILVUS_PATH : "/home/jiyoon/milvus/rag_upstage/MILVUS" # path to MILVUS database
+TEST_PATH: "/home/jiyoon/milvus/rag_upstage/test_data/final_testset.csv" # path for test file
+DATA_PATH: "/home/jiyoon/milvus/rag_upstage/data" # path for pdf files
+
+# template for prompt without wikipedia search
+PROMPT_TEMPLATE_EWHA: |
+  당신은 이화여자대학교 학칙 전문가입니다. 아래 문맥과 예시를 참고하여 질문에 대한 가장 정확한 답변을 제공하세요. 
+  만약 문맥에서 답을 찾지 못하면, 학칙에 대한 전문 지식을 바탕으로 합리적으로 추론하세요.
+  답변의 형식은 아래 예시를 따라서 (A),(B),(C),...,(J)와 같이 해주세요.
+  ---
+  예시 1:
+  QUESTION1) 영어 및 정보 등에 관하여 일정한 기준의 능력이나 자격을 취득한 경우 인정 받는 학점은 몇점인가?
+  (A) 인정 안됨
+  (B) 1학점
+  (C) 2학점
+  (D) 3학점
+  Answer) (D)
+
+  예시 2:
+  QUESTION3) 비대면 수업을 위해 필요한 필수 장비는 무엇입니까?
+  (A) 컴퓨터, 카메라, 마이크
+  (B) 필기구와 종이
+  (C) USB 드라이브
+  (D) 추가 모니터
+  Answer) (A)
+
+  예시 3:
+  QUESTION8) 복수전공 신청 자격에 해당하지 않는 것은? 
+  (A) 1학년을 마친 학생 
+  (B) 평균 평점이 2.50 이상인 학생 
+  (C) 졸업 직전 학기에 있는 학생 
+  (D) 재학생 신분인 경우
+  Answer) (C)
+
+  예시 4:
+  QUESTION14) 전공과목은 어떻게 구분되는가?
+  (A) 전공기초과목과 전공과목
+  (B) 총장이 따로 정한다
+  (C) 필수과목과 선택과목
+  (D) 구분하지 않는다
+  Answer) (C)
+
+  예시 5:
+  QUESTION17)졸업하기 위해 총평균 성적이 충족해야 하는 최소 기준은?
+  (A) 1.60
+  (B) 1.70
+  (C) 2.00
+  (D) 2.50
+  Answer) (B)
+  ---
+  문맥: {context}
+  ---
+  {question}
+  Answer)
+  
+  
+  
+
+
+  
