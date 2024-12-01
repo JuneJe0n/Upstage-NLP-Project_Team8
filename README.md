@@ -59,8 +59,6 @@ TEST_PATH: path to your test file
 DATA_PATH: path to your data directory
 ```
 
-
-
 ### Create Database
 
 1. To reset the database and start fresh, run this command
@@ -75,6 +73,8 @@ python populate_milvus.py
 ```python
 python populate_ewha_milvus.py
 ```
+### Inference
+
 
 ### Query the Database
 
@@ -102,7 +102,7 @@ python query_multiplechoice.py
    - Found out that using ChatPromptTemplate and 5 shot prompting is very important, and polished every single prompt in order to improve performance.
    - Proposed the idea of separating the database and implemented it, which was a big help to the performance scores.
 
-2. **(박경숙)**
+2. **Kyeongsook Park (박경숙)**
 - Created keywords extract prompt + used keyword subsets for wikipedia search
 - Implemented semantic splitting using 4 ways of threshold types
 - Implemented multichoice answer extraction
@@ -114,7 +114,7 @@ python query_multiplechoice.py
 - Implemented post-processing logic to calculate and filter similarity scores based on search results.
 - Generated 50 questions for performance evaluation based on the Ewha Womans University regulations
 
-4. **(허예원)**
+4. **Yewon Heo (허예원)**
 - PDF Preprocessing: Implemented techniques for efficient data extraction and structuring from PDF files.
 - Prompt Engineering
    - Designed domain-specific templates for Ewha academic regulations and MMLU-Pro datasets.
