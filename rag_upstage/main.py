@@ -8,7 +8,6 @@ from pymilvus import (
     FieldSchema, CollectionSchema, DataType, IndexType,
     Collection, AnnSearchRequest, RRFRanker, WeightedRanker,model
 )
-from langchain.retrievers import BM25Retriever, EnsembleRetriever
 from langchain.prompts import ChatPromptTemplate, PromptTemplate
 from langchain_upstage import ChatUpstage
 from langchain.schema import Document
