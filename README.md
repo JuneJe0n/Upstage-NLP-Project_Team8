@@ -7,15 +7,15 @@ This project aims to build a Retrieval-Augmented Generation (RAG) system using t
 
 ### Base Conditions
 
-1. Model
+1. **Model**
 - Backbone LLM: solar-1-mini-chat (provided by Upstage).
 - Maximum token length: 32,768.
 
-2. Datasets
+2. **Datasets**
 - Ewha Academic Policies: Data from Ewha University Academic Regulations.
 - MMLU-Pro: QA datasets spanning Law, Psychology, Business, Philosophy, and History. 
 
-3. Key Rules
+3. **Key Rules**
 - No Fine-Tuning: Model retraining is not allowed; only prompt engineering and external retrieval are used.
 - External Retrieval: Information is retrieved via Wiki Search API.
 - Token Constraints: Responses must be concise and fit within the token limit.
