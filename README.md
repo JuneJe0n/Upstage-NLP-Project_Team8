@@ -80,3 +80,30 @@ python query_multiplechoice.py
 ### Project Pipeline
 
 ## Contributions
+1. Jiyoon Jeon (전지윤)
+- Designed pipeline and created baseline code
+- Gathered and polished every code written by team members 
+   -> Had to study every method used in the project, and invest a lot of time and effort in merging codes with different styles and structures. Especially had a very hard time debugging, and selecting best methods and structures.
+- Found out that using ChatPromptTemplate and 5 shot prompting is very important, and polished every single prompt in order to improve performance.
+- Proposed the idea of separating the database and implemented it, which was a big help to the performance scores.
+
+2. (박경숙)
+- Created keywords extract prompt + used keyword subsets for wikipedia search
+- Implemented semantic splitting using 4 ways of threshold types
+- Implemented multichoice answer extraction
+
+3. (한다인)
+- Implemented Wikipedia page fetching using the wikipediaapi library.
+- Built a database using Milvus: created and managed data collections, including HNSW search index.
+- Developed a hybrid search algorithm combining sparse and dense vector-based search functionalities.
+- Implemented post-processing logic to calculate and filter similarity scores based on search results.
+- Generated 50 questions for performance evaluation based on the Ewha Womans University regulations
+
+4. (허예원)
+- PDF Preprocessing: Implemented techniques for efficient data extraction and structuring from PDF files.
+- Prompt Engineering
+   - Designed domain-specific templates for Ewha academic regulations and MMLU-Pro datasets.
+   - Integrated few-shot learning examples and fallback logic for accurate responses with limited context.
+- Dataset Creation: Curated and organized datasets for Ewha academic policies and MMLU-Pro domains.
+
+5. Jungmin Byeon (변정민)
