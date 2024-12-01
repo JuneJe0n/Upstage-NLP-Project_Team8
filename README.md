@@ -116,4 +116,5 @@ We constructed our baseline using the following models.
 
 5. **Jungmin Byeon (변정민)**
 - Proposed idea of contexual retrieval method, implementing sparse and dense vector retrieval splitting methods (semantic, recursive)
-- ppt, presentation
+draft for ppt, presentation script
+
