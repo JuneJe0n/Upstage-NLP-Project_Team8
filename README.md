@@ -8,7 +8,7 @@ This project aims to build a Retrieval-Augmented Generation (RAG) system using t
 ### Base Conditions
 
 1. **Model**
-- Backbone LLM: solar-1-mini-chat (provided by Upstage).
+- Backbone LLM: [Upstage solar-1-mini-chat](https://console.upstage.ai/docs/capabilities/chat)
 - Maximum token length: 32,768.
 
 2. **Datasets**
@@ -84,7 +84,16 @@ python query_multiplechoice.py
 ```
 
 ## Project Detail
-### Model and API setup
+### Used Models
+We constructed our baseline using the following models.
+- **Baseline LLM** : [Upstage solar-1-mini-chat](https://console.upstage.ai/docs/capabilities/chat) (Required in this project)
+- **Search API** : [Wikipedia API](https://pypi.org/project/Wikipedia-API/) (Required in this project)
+- **Database** : [pymilvus](https://milvus.io/)
+- **Embedding** : pymilvus BGEM3EmbeddingFunction
+- **Splitter** :
+   - langchain_text_splitters RecursiveCharacterTextSplitter
+   - langchain_experimental.text_splitter SemanticChunker
+- **Prompt Template** : langchain.prompts ChatPromptTemplate
 ### Project Pipeline
 
 ## Contributions
