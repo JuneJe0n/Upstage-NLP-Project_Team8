@@ -21,6 +21,8 @@ This project aims to build a Retrieval-Augmented Generation (RAG) system using t
 - Token Constraints: Responses must be concise and fit within the token limit.
 
 ## Project Settings
+To try out our project, follow the steps below :
+
 ### Requirements
 
 A suitable conda enviroment named `nlp` can be created and activated with:
