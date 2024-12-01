@@ -58,7 +58,7 @@ python populate_milvus.py --reset
  ```python
 python populate_milvus.py
 ```
-3. Create ewha_milvus database, contains only ewha regarded data
+3. Create ewha_milvus database, containing only ewha regarded data
 ```python
 python populate_ewha_milvus.py
 ```
