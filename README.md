@@ -109,3 +109,5 @@ python query_multiplechoice.py
 - Dataset Creation: Curated and organized datasets for Ewha academic policies and MMLU-Pro domains.
 
 5. Jungmin Byeon (변정민)
+- Proposed idea of contexual retrieval method, implementing sparse and dense vector retrieval splitting methods (semantic, recursive)
+- ppt, presentation
