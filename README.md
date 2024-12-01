@@ -1,10 +1,11 @@
 # Upstage-NLP-Project_Team8
 
-## Project Objective
+## Project Overview
+### Project Objective
 
 This project aims to build a Retrieval-Augmented Generation (RAG) system using the solar-1-mini-chat LLM by Upstage. The system enhances question-answering performance by integrating prompt engineering, data preprocessing, and external information retrieval. External knowledge is retrieved via the Wiki Search API to provide accurate and reliable answers. 
 
-## Base Conditions
+### Base Conditions
 
 1. Model
 - Backbone LLM: solar-1-mini-chat (provided by Upstage).
@@ -19,7 +20,8 @@ This project aims to build a Retrieval-Augmented Generation (RAG) system using t
 - External Retrieval: Information is retrieved via Wiki Search API.
 - Token Constraints: Responses must be concise and fit within the token limit.
 
-## Install Dependencies
+## Project Settings
+### Install Dependencies
 1. Do the following before installing the dependencies found in `requirements.txt` file because of current challenges installing ,`onnxruntime` through `pip install onnxruntime`. 
 ```python
 conda install onnxruntime -c conda-forge
@@ -31,7 +33,7 @@ conda install onnxruntime -c conda-forge
 pip install -r requirements.txt
 ```
 
-## Environment Configuration Set Up
+### Environment Configuration Setup
 
 Before running the project, ensure you configure the required environment variables. Follow these steps to set up the `.env` file:
 
@@ -43,7 +45,7 @@ Before running the project, ensure you configure the required environment variab
    USER_AGENT=your custom user agent string for Wikipedia-API requests (e.g., MyProject/1.0 (your_email@example.com))
 
 
-## Create database
+### Create Database
 
 Create the Milvus DB.
 
@@ -51,7 +53,7 @@ Create the Milvus DB.
 python populate_milvus.py --reset
 ```
 
-## Query the database
+### Query the Database
 
 Query the Chroma DB.
 
@@ -62,3 +64,9 @@ or use a test.csv file to query the Chroma DB.
 ```python
 python query_multiplechoice.py
 ```
+
+## Project Detail
+### Model and API setup
+### Project Pipeline
+
+## Contributions
