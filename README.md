@@ -100,6 +100,7 @@ We constructed our baseline using the following models.
 - Contributed a lot in enhancing performance
    - Found out that using ChatPromptTemplate and 5 shot prompting is very important, and polished every single prompt in order to improve performance.
    - Proposed the idea of separating the database and implemented it, which was a big help to the performance scores.
+- Outlined README structure, and polished format
 
 2. **Kyeongsook Park (박경숙)**
 - Created a keyword extraction prompt and used keyword subsets for Wikipedia search.
