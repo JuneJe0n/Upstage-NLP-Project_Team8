@@ -45,8 +45,8 @@ Before running the project, ensure you set up the `.env` file and the datapath i
 
 2. Add the following environment variables to the `.env` file:
 ```plaintext
-UPSTAGE_API_KEY=your API key for Upstage
-USER_AGENT=your custom user agent string for Wikipedia-API requests (e.g., MyProject/1.0 (your_email@example.com))
+UPSTAGE_API_KEY = your API key for Upstage
+USER_AGENT = your custom user agent string for Wikipedia-API requests (e.g., MyProject/1.0 (your_email@example.com))
 ```
 
 3. Go to `configs.yaml`and modify the datapaths accordingly:
