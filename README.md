@@ -1,7 +1,7 @@
 # Upstage NLP Project (Team8)
 
 ## Project Overview
-### Project Objective
+### Project Objective 
 
 This project aims to build a Retrieval-Augmented Generation (RAG) system using the solar-1-mini-chat LLM by Upstage. The system enhances question-answering performance by integrating prompt engineering, data preprocessing, and external information retrieval. External knowledge is retrieved via the Wiki Search API to provide accurate and reliable answers. 
 
