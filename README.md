@@ -37,9 +37,7 @@ pip install -r requirements.txt
 
 ### Environment Configuration Setup
 
-Before running the project, ensure you configure the required environment variables. 
-
-Follow these steps to set up the `.env` file:
+Before running the project, ensure you configure the required environment variables. Follow these steps to set up the `.env` file:
 
 1. Create a `.env` file in the root directory of the project.
 
@@ -47,16 +45,6 @@ Follow these steps to set up the `.env` file:
 ```plaintext
 UPSTAGE_API_KEY=your API key for Upstage
 USER_AGENT=your custom user agent string for Wikipedia-API requests (e.g., MyProject/1.0 (your_email@example.com))
-```
-
-Follow these steps to set up the `configs.yaml` file:
-
-1. Create a `configs.yaml` file in the root directory of the project.
-
-2. Add the following configurations to the `configs.yaml` file:
-```plaintext
-TEST_PATH: path to your test file
-DATA_PATH: path to your data directory
 ```
 
 
