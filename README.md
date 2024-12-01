@@ -96,9 +96,11 @@ We constructed our baseline using the following models.
    - Proposed the idea of separating the database and implemented it, which was a big help to the performance scores.
 
 2. **Kyeongsook Park (박경숙)**
-- Created keywords extract prompt + used keyword subsets for wikipedia search
-- Implemented semantic splitting using 4 ways of threshold types
-- Implemented multichoice answer extraction
+- Created a keyword extraction prompt and used keyword subsets for Wikipedia search.
+- Implemented semantic splitting with four threshold types.
+- Developed a multi-choice answer extraction method.
+- Extracted problem type and core question for prompt engineering.
+- Created a PowerPoint presentation.
 
 3. **Dain Han (한다인)**
 - Implemented Wikipedia page fetching using the wikipediaapi library.
