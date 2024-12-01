@@ -47,10 +47,17 @@ Before running the project, ensure you configure the required environment variab
 
 ### Create Database
 
-Create the Milvus DB.
-
+1. To reset the database and start fresh, run this command
 ```python
 python populate_milvus.py --reset
+```
+2. Create Milvus database
+ ```python
+python populate_milvus.py
+```
+3. Create ewha_milvus database, contains only ewha regarded data
+```python
+python populate_ewha_milvus.py
 ```
 
 ### Query the Database
