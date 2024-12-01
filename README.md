@@ -101,7 +101,7 @@ python query_multiplechoice.py
 - Implemented post-processing logic to calculate and filter similarity scores based on search results.
 - Generated 50 questions for performance evaluation based on the Ewha Womans University regulations
 
-4. **(허예원)**
+4. **Yewon Heo (허예원)**
 - PDF Preprocessing: Implemented techniques for efficient data extraction and structuring from PDF files.
 - Prompt Engineering
    - Designed domain-specific templates for Ewha academic regulations and MMLU-Pro datasets.
