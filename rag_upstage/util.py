@@ -115,12 +115,21 @@ def check_question(question):
 def check_chat(question):
     llm = ChatUpstage(api_key=upstage_api_key, model="solar-1-mini-chat")
     template = ChatPromptTemplate.from_messages([
-    ("system","""You are a specialized assistant trained to determine if a question is related to school regulations. 
-    Response True if the question relates to school regulations and False otherwise. 
-    Generate your responses carefully based on your knowledge about school regulations and the examples below.
-    If the question is in Korean rather than English, it is highly probable that it is related to school regulations. 
-    Provide no explanations or additional information—just "True" or "False". This is very important. 
-    Never return responses other than "True" or "False".
+    ("system",
+     """
+    Categories:
+    1. school regulations
+    2. academic regulations
+    3. any information about a school
+
+    You are a specialized assistant trained to determine if a question is related to any of the categories above.
+    Response "True" if the question relates to any of the categories above and "False" otherwise. 
+    
+    The following points should be noted while generating responses:
+    1. If the question is in Korean, it is very likely that the question is about school regulations. 
+    2. Generate your responses carefully based on your knowledge about schools and the examples below.
+    3. Provide no explanations or additional information—just "True" or "False". This is very important. 
+    4. Never return responses other than "True" or "False".
     ---
     Example 1:
     QUESTION2) LMS 시스템의 초기 비밀번호는 무엇으로 설정되어 있습니까?
