@@ -62,6 +62,8 @@ python populate_milvus.py
 ```python
 python populate_ewha_milvus.py
 ```
+### Inference
+
 
 ### Query the Database
 
