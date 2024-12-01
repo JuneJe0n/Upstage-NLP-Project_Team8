@@ -85,8 +85,9 @@ python query_multiplechoice.py
 - Gathered and polished every code written by team members 
    - Had to study every method used in the project, and invest a lot of time and effort in merging codes with different styles and structures.
    - Especially had a very hard time debugging, and selecting best methods and structures.
-- Found out that using ChatPromptTemplate and 5 shot prompting is very important, and polished every single prompt in order to improve performance.
-- Proposed the idea of separating the database and implemented it, which was a big help to the performance scores.
+- Contributed a lot in enhancing performance
+   - Found out that using ChatPromptTemplate and 5 shot prompting is very important, and polished every single prompt in order to improve performance.
+   - Proposed the idea of separating the database and implemented it, which was a big help to the performance scores.
 
 2. (박경숙)
 - Created keywords extract prompt + used keyword subsets for wikipedia search
