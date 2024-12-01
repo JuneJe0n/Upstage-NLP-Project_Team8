@@ -94,7 +94,7 @@ python query_multiplechoice.py
 - Implemented semantic splitting using 4 ways of threshold types
 - Implemented multichoice answer extraction
 
-3. (한다인)
+3. Dain Han (한다인)
 - Implemented Wikipedia page fetching using the wikipediaapi library.
 - Built a database using Milvus: created and managed data collections, including HNSW search index.
 - Developed a hybrid search algorithm combining sparse and dense vector-based search functionalities.
