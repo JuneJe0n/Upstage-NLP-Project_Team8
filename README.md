@@ -1,4 +1,4 @@
-# Upstage-NLP-Project_Team8
+# Upstage NLP Project (Team8)
 
 ## Project Overview
 ### Project Objective
