@@ -21,15 +21,17 @@ This project aims to build a Retrieval-Augmented Generation (RAG) system using t
 - Token Constraints: Responses must be concise and fit within the token limit.
 
 ## Project Settings
-### Install Dependencies
-1. Do the following before installing the dependencies found in `requirements.txt` file because of current challenges installing ,`onnxruntime` through `pip install onnxruntime`. 
+### Requirements
+
+A suitable conda enviroment named `nlp` can be created and activated with:
 ```python
-conda install onnxruntime -c conda-forge
+conda create --name nlp python=3.12.12
+conda activate nlp
 ```
 
-2. Now run this command to install dependenies in the `requirements.txt` file. 
-
+To get started, install the required python packages into you `nlp` enviroment
 ```python
+conda install onnxruntime -c conda-forge
 pip install -r requirements.txt
 ```
 
@@ -43,6 +45,7 @@ Before running the project, ensure you configure the required environment variab
    ```plaintext
    UPSTAGE_API_KEY=your API key for Upstage
    USER_AGENT=your custom user agent string for Wikipedia-API requests (e.g., MyProject/1.0 (your_email@example.com))
+   ```
 
 
 ### Create Database
