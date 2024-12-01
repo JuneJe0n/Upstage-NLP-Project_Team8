@@ -1,14 +1,14 @@
 # Upstage NLP Project (Team8)
 
 ## Project Overview
-### Project Objective
+### Project Objective 
 
 This project aims to build a Retrieval-Augmented Generation (RAG) system using the solar-1-mini-chat LLM by Upstage. The system enhances question-answering performance by integrating prompt engineering, data preprocessing, and external information retrieval. External knowledge is retrieved via the Wiki Search API to provide accurate and reliable answers. 
 
 ### Base Conditions
 
 1. **Model**
-- Backbone LLM: solar-1-mini-chat (provided by Upstage).
+- Backbone LLM: [Upstage solar-1-mini-chat](https://console.upstage.ai/docs/capabilities/chat)
 - Maximum token length: 32,768.
 
 2. **Datasets**
@@ -59,6 +59,7 @@ TEST_PATH: path to your test file
 DATA_PATH: path to your data directory
 ```
 
+
 ### Create Database
 
 1. To reset the database and start fresh, run this command
@@ -69,13 +70,19 @@ python populate_milvus.py --reset
  ```python
 python populate_milvus.py
 ```
-3. Create ewha_milvus database, contains only ewha regarded data
+3. Create ewha_milvus database, containing only ewha regarded data
 ```python
 python populate_ewha_milvus.py
 ```
 ### Inference
+-main.py connects to Milvus and loads the necessary collections (ewha_collection and wiki_collection).
 
+-It serves as the core of the system, where incoming queries are classified to determine if they are related to Ewha. If the query is Ewha-related, the system retrieves content from the Ewha database; otherwise, it proceeds with a Wikipedia fetch. 
 
+-The final response is generated using the content returned by hybrid search, based on query similarity, and a query's domain-specific prompt.
+```python
+python main.py
+```
 ### Query the Database
 
 Query the Chroma DB.
@@ -89,7 +96,16 @@ python query_multiplechoice.py
 ```
 
 ## Project Detail
-### Model and API setup
+### Used Models
+We constructed our baseline using the following models.
+- **Baseline LLM** : [Upstage solar-1-mini-chat](https://console.upstage.ai/docs/capabilities/chat) (Required in this project)
+- **Search API** : [Wikipedia API](https://pypi.org/project/Wikipedia-API/) (Required in this project)
+- **Database** : [pymilvus](https://milvus.io/)
+- **Embedding** : pymilvus BGEM3EmbeddingFunction
+- **Splitter** :
+   - langchain_text_splitters RecursiveCharacterTextSplitter
+   - langchain_experimental.text_splitter SemanticChunker
+- **Prompt Template** : langchain.prompts ChatPromptTemplate
 ### Project Pipeline
 
 ## Contributions
