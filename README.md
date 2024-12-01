@@ -89,7 +89,7 @@ python query_multiplechoice.py
    - Found out that using ChatPromptTemplate and 5 shot prompting is very important, and polished every single prompt in order to improve performance.
    - Proposed the idea of separating the database and implemented it, which was a big help to the performance scores.
 
-2. **Kyeongsook Park(박경숙)**
+2. **Kyeongsook Park (박경숙)**
 - Created keywords extract prompt + used keyword subsets for wikipedia search
 - Implemented semantic splitting using 4 ways of threshold types
 - Implemented multichoice answer extraction
