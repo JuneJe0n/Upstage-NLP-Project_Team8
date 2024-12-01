@@ -63,8 +63,10 @@ python populate_milvus.py
 python populate_ewha_milvus.py
 ```
 ### Inference
--main.py connects to Milvus and loads the necessary collections (ewha_collection and wiki_collection). 
+-main.py connects to Milvus and loads the necessary collections (ewha_collection and wiki_collection).
+
 -It serves as the core of the system, where incoming queries are classified to determine if they are related to Ewha. If the query is Ewha-related, the system retrieves content from the Ewha database; otherwise, it proceeds with a Wikipedia fetch. 
+
 -The final response is generated using the content returned by hybrid search, based on query similarity, and a query's domain-specific prompt.
 ```python
 python main.py
