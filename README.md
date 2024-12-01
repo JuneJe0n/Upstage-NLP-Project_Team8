@@ -71,17 +71,6 @@ python populate_ewha_milvus.py
 ```python
 python main.py
 ```
-### Query the Database
-
-Query the Chroma DB.
-
-```python
-python query_data.py "영어 및 정보 등에 관하여 일정한 기준의 능력이나 자격을 취득한 경우 인정 받는 학점은 몇점인가?"
-```
-or use a test.csv file to query the Chroma DB.
-```python
-python query_multiplechoice.py
-```
 
 ## Project Detail
 ### Used Models
