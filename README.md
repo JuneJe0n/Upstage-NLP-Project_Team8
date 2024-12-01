@@ -14,10 +14,10 @@ pip install -r requirements.txt
 
 ## Create database
 
-Create the Chroma DB.
+Create the Milvus DB.
 
 ```python
-python create_database.py
+python populate_milvus.py --reset
 ```
 
 ## Query the database
